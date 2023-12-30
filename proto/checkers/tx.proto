@@ -1,0 +1,52 @@
+syntax = "proto3";
+package alice.checkers.checkers;
+
+// this line is used by starport scaffolding # proto/tx/import
+
+option go_package = "github.com/alice/checkers/x/checkers/types";
+
+// Msg defines the Msg service.
+service Msg {
+      rpc CreatePost(MsgCreatePost) returns (MsgCreatePostResponse);
+  rpc CreateGame(MsgCreateGame) returns (MsgCreateGameResponse);
+  rpc PlayMove(MsgPlayMove) returns (MsgPlayMoveResponse);
+// this line is used by starport scaffolding # proto/tx/rpc
+}
+
+message MsgCreatePost {
+  string creator = 1;
+  string title = 2;
+  string body = 3;
+}
+
+message MsgCreatePostResponse {
+}
+
+message MsgCreateGame {
+  string creator = 1;
+  string black = 2;
+  string red = 3;
+  uint64 wager = 4;
+  string denom = 5;
+}
+
+message MsgCreateGameResponse {
+  string gameIndex = 1;
+}
+
+message MsgPlayMove {
+  string creator = 1;
+  string gameIndex = 2;
+  uint64 fromX = 3;
+  uint64 fromY = 4;
+  uint64 toX = 5;
+  uint64 toY = 6;
+}
+
+message MsgPlayMoveResponse {
+  int32 capturedX = 1;
+  int32 capturedY = 2;
+  string winner = 3;
+}
+
+// this line is used by starport scaffolding # proto/tx/message

@@ -1,0 +1,19 @@
+syntax = "proto3";
+package alice.checkers.checkers;
+
+option go_package = "github.com/alice/checkers/x/checkers/types";
+
+message StoredGame {
+  string index = 1;
+  string board = 2;
+  string turn = 3;
+  string black = 4;
+  string red = 5;
+  string winner = 6;
+  string deadline = 7;
+  uint64 moveCount = 8;
+  string beforeIndex = 9; // Pertains to the FIFO. Toward head.
+  string afterIndex = 10; // Pertains to the FIFO. Toward tail.
+  uint64 wager = 11;
+  string denom = 12;
+}
